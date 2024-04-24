@@ -91,9 +91,8 @@ class CreateInstanceAcceptanceTest extends CloudFoundryAcceptanceTest {
 
 		// and stack is updated when specified
 		Optional<ApplicationDetail> application1Detail = getApplicationDetail(APP_CREATE_1);
-		assertThat(application1Detail).hasValueSatisfying(app -> {
-			assertThat(app.getStack()).isEqualTo("cflinuxfs4");
-		});
+		assertThat(application1Detail).hasValueSatisfying(app ->
+			assertThat(app.getStack()).isEqualTo("cflinuxfs4"));
 
 		// and has the environment variables
 		DocumentContext json = getSpringAppJson(APP_CREATE_1);

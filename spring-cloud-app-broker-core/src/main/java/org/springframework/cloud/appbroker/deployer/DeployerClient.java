@@ -211,16 +211,13 @@ public class DeployerClient {
 					.builder()
 					.name(spaceName)
 					.build())
-			.doOnRequest(l -> {
-				LOG.info("Deleting backing space {}", spaceName);
-			})
-			.doOnSuccess(response -> {
-				LOG.info("Success deleting backing space {}", spaceName);
-			})
-			.doOnError(e -> {
+			.doOnRequest(l ->
+				LOG.info("Deleting backing space {}", spaceName))
+			.doOnSuccess(response ->
+				LOG.info("Success deleting backing space {}", spaceName))
+			.doOnError(e ->
 				LOG.error(String.format("Error deleting backing space. backingSpaceName=%s, error=%s",
-					spaceName, e.getMessage()), e);
-			})
+					spaceName, e.getMessage()), e))
 			.onErrorReturn(DeleteBackingSpaceResponse.builder()
 				.name(spaceName)
 				.build())

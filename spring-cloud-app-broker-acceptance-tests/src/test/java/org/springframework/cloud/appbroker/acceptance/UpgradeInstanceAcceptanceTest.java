@@ -132,9 +132,8 @@ class UpgradeInstanceAcceptanceTest extends CloudFoundryAcceptanceTest {
 
 		// and stack is updated when specified
 		Optional<ApplicationDetail> application1Detail = getApplicationDetail(APP_NAME);
-		assertThat(application1Detail).hasValueSatisfying(app -> {
-			assertThat(app.getStack()).isEqualTo("cflinuxfs4");
-		});
+		assertThat(application1Detail).hasValueSatisfying(app ->
+			assertThat(app.getStack()).isEqualTo("cflinuxfs4"));
 
 		// then the backing application was updated with zero downtime
 		healthListener.stop();
